@@ -1,0 +1,11 @@
+{
+  "name": "rexijs-mongodb",
+  "version": "1.0.0",
+  "imports": {
+    "#*": "~src/*"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mongoose": "^6.7.3"
+  }
+}

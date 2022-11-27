@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-// const basename = path.basename(__filename);
+const basename = path.dirname(require.main.filename);
 const { model, Schema } = require('mongoose');
 let models = {};
 let configModels = {};
@@ -34,15 +34,12 @@ function addModels(dir, file){
   }
 }
 
-// Import module models
-let parent = path.dirname(path.dirname(__dirname));
-
 modules.forEach((el) => {
   let root = null;
 
-  // Check if have @
-  if (el.charAt(0) === '@') root = [path.dirname(require.main.filename), el.replace(/^@/, '') , 'models'].join(path.sep);
-  else root = [el, 'models'].join(path.sep);
+  // Check if have #
+  if (el.charAt(0) === '#') root = [basename, 'src', el.replace(/^#/, '') , 'models'].join(path.sep);
+  else root = [basename, 'node_modules', el, 'models'].join(path.sep);
   
   if (fs.existsSync(root)) {
     fs
