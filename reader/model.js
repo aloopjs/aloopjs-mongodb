@@ -38,8 +38,12 @@ function addModels(dir, file){
 let parent = path.dirname(path.dirname(__dirname));
 
 modules.forEach((el) => {
-  let root = [parent, el , 'models'].join(path.sep);
+  let root = null;
 
+  // Check if have @
+  if (el.charAt(0) === '@') root = [path.dirname(require.main.filename), el.replace(/^@/, '') , 'models'].join(path.sep);
+  else root = [el, 'models'].join(path.sep);
+  
   if (fs.existsSync(root)) {
     fs
     .readdirSync(root)
