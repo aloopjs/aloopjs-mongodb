@@ -4,7 +4,7 @@ const basename = path.dirname(require.main.filename);
 const { model, Schema } = require('mongoose');
 let models = {};
 let configModels = {};
-const{modules} = App.rootConfig;
+const{modules} = App.options;
 
 function addModels(dir, file){
   let model = require(path.join(dir, file));
