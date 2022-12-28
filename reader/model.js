@@ -37,9 +37,9 @@ function addModels(dir, file){
 modules.forEach((el) => {
   let root = null;
 
-  // Check if have #
-  if (el.charAt(0) === '#') root = [basename, 'src', el.replace(/^#/, '') , 'models'].join(path.sep);
-  else root = [basename, 'node_modules', el, 'models'].join(path.sep);
+  // Check if have not start @
+  if (el.charAt(0) !== '@') root = [basename, 'src', el, 'models'].join(path.sep);
+  else root = [basename, 'node_modules', el.replace(/^@/, ''), 'models'].join(path.sep);
   
   if (fs.existsSync(root)) {
     fs
