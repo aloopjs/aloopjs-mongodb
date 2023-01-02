@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const basename = path.dirname(require.main.filename);
 const { model, Schema } = require('mongoose');
 let models = {};
 let configModels = {};
@@ -35,11 +34,7 @@ function addModels(dir, file){
 }
 
 modules.forEach((el) => {
-  let root = null;
-
-  // Check if have not start @
-  if (el.charAt(0) !== '@') root = [basename, 'src', el, 'models'].join(path.sep);
-  else root = [basename, 'node_modules', el.replace(/^@/, ''), 'models'].join(path.sep);
+  let root = __modulePath(el, 'models');
   
   if (fs.existsSync(root)) {
     fs
