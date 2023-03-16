@@ -1,6 +1,6 @@
 {
-  "name": "rexijs-mongodb",
-  "version": "1.0.8",
+  "name": "aloopjs-mongodb",
+  "version": "1.0.0",
   "devDependencies": {
     "dotenv": "^16.0.3",
     "mongoose": "^6.7.3"
