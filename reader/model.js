@@ -3,7 +3,7 @@ const path = require('path');
 const { model, Schema } = require('mongoose');
 let models = {};
 let configModels = {};
-const{modules} = App.options;
+const{modules} = Aloop.options;
 
 function addModels(dir, file){
   let model = require(path.join(dir, file));
@@ -34,7 +34,7 @@ function addModels(dir, file){
 }
 
 modules.forEach((el) => {
-  let root = App.base.modulePath(el, 'models');
+  let root = Aloop.base.modulePath(el, 'models');
   
   if (fs.existsSync(root)) {
     fs
